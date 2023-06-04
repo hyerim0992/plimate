@@ -4,7 +4,6 @@ const express = require('express'); // Express web server framework
 const request = require('request'); // "Request" library
 const router = express.Router();
 
-
 const cors = require('cors');
 const querystring = require('querystring');
 const cookieParser = require('cookie-parser');
@@ -15,6 +14,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const axios = require('axios');
 const http = require('http');
+const https = require('https');
 const server = http.createServer(app);
 const SpotifyWebApi = require('spotify-web-api-node');
 const { Script } = require('vm');
@@ -26,6 +26,14 @@ const spotifyApi = new SpotifyWebApi({
     clientSecret: client_secret,
     redirectUri: redirect_uri
 });
+
+const options = { // letsencrypt로 받은 인증서 경로를 입력
+	ca: fs.readFileSync('/etc/letsencrypt/live/plimate.kro.kr/fullchain.pem'),
+	key: fs.readFileSync('/etc/letsencrypt/live/plimate.kro.kr/privkey.pem'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/plimate.kro.kr/cert.pem')
+	};
+
+
 
 require('dotenv').config();
 
@@ -139,6 +147,6 @@ app.get('/callback', function(req, res) {
 	  });
 	});
 
-server.listen(80,() => {
-    console.log(`Server running on port: ${port}`);
-})
+	http.createServer(app).listen(80);
+	https.createServer(options, app).listen(443);
+

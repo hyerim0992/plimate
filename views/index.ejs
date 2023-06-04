@@ -20,7 +20,7 @@
         
         console.log("플레이어 스크립트 실행")
         window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = "BQCN5mbgLRSBnhkvVLC0hHcJ83lpXFa2blWqwiAUHkFfxjjELli-RROOm9TVlKy87MeOfNigd9Qa5Jbhsp_FIEo2H6dAFSA65tt62QDhM36lUD8KPSeCf10vYBO0Lk4rFJtqx8L3MvahkrFKDSldXNz1QmUKTi1D-9UHfNx98V7ZVGvmjlLK8Uf9u0plJ3hyr_RI1t50CgrCnOvbelkBB5DOHfYmA4QR";
+            const token = "BQCkgnOISq2vuqb1XndCSd1MX4kTnGNdQF1_mT_ayVvOgpOKOF3CdsL8WoUc5UAHysND9H8Y72LtXMwoqBT_KnzKSZZOVdtZ7Qv7I4haHS9usZ2VDsfftNDQg7qplal7-QDl4XKbVOazFqgQLf2TR-pQtvOI77Ag-mvTq_Jurdyl1bUSSpBrfHkaROy_PDeaDBLniyLF4eAruOUUTQuA1Oiux-TEQJfL";
             const player = new Spotify.Player({
                 name: 'Web Playback SDK Quick Start Player',
                 getOAuthToken: cb => { cb(token); },
