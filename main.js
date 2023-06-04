@@ -15,9 +15,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const axios = require('axios');
 const http = require('http');
-const socket = require('socket.io');
 const server = http.createServer(app);
-const io = socket(server);
 const SpotifyWebApi = require('spotify-web-api-node');
 const { Script } = require('vm');
 const client_id = '2452ff5abd354d9c95b54de67bb9eb72'; // Your client id
@@ -44,6 +42,7 @@ app.use(express.static(__dirname + '/public'))
 
 
 app.set("view engine", "ejs");
+
 
 var generateRandomString = function(length) {
 	var text = '';
