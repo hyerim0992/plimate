@@ -20,7 +20,7 @@ const SpotifyWebApi = require('spotify-web-api-node');
 const { Script } = require('vm');
 const client_id = '2452ff5abd354d9c95b54de67bb9eb72'; // Your client id
 const client_secret = '64537e46115f41719d976e933eafe3d6'; // Your secret
-const redirect_uri = 'http://34.64.57.216:80/callback'; // Your redirect uri
+const redirect_uri = 'https://plimate.kro.kr/callback';  // Your redirect uri
 const spotifyApi = new SpotifyWebApi({
     clientId: client_id,
     clientSecret: client_secret,
@@ -86,8 +86,10 @@ app.get('/',async(req,res)=>{
 
 app.post('/toggleplay', async (req, res) => {
   const devices = await spotifyApi.getMyDevices();
-  console.log(devices.body.devices.id); //여기서 찍어보고 해당된 아이디 가져오고 아래 코드에 경로 추가하기 
+  console.log(devices.body.devices[0][0]); //여기서 찍어보고 해당된 아이디 가져오고 아래 코드에 경로 추가하기 
     const id = devices.body.devices.id //추가하기
+	console.log(id)
+	await spotifyApi.transferMyPlayback([id],true)
     await spotifyApi.play({ device_id: id, uris: ['spotify:track:7tajvm3L4vnNsOyMBf3yq3'] });
     console.log('/toggleplay');
 	res.redirect('/');
