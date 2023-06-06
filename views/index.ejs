@@ -12,18 +12,14 @@
       </form>
 
     <form action="/toggleplay" method="POST">
-        <button id="togglePlay">connect</button>
-      </form>
-
-      <form action="/play" method="PUT">
-        <button id="Play">Play</button>
+        <button id="togglePlay">toggle Play</button>
       </form>
 
       <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
 
         window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = 'BQDp7biMsocuntUvIAAWlFhOBOFZ-fcvjdMO1XOLN12XPVlQjAf671l46UUxuSGDy6f2-w1d_vYoc_x9xwBmyRXy5NCGCmqKk4Hxq72lez6zdJpZifND7RUPN3OfZiZYpY8vN6QtJ4KLirF2-5CZl3J-U4gFcT863CaDGEfjjI-FS-f2d3UnjU8TUxq4tFcfmWU5GImSC3LhqvtDKx5m0s0_XTDbcTX-';
+            const token = 'BQCQlau3YBvu5SDGoPq7wk6cC2NlPG-vZq3HduyFHO5ZPfY47DAoaab2kFpzSrKZOA_18_8JxnhvSXLIEKggLdWh31pfeE7kbDzO7x70ZdUaSp2Q-9LrLwHqRJ0AqrPfcfn4bU8HnyJUZFi4yUAvwRRxZeoBkUV8srNyR7BozFPoJif8c2kCytlNy9mAfqZutR7qjW3h5CAr9NXM6oLVALVQfEb2RVt-';
             const player = new Spotify.Player({
                 name: 'Web Playback SDK Quick Start Player',
                 getOAuthToken: cb => { cb(token); },
@@ -51,10 +47,6 @@
             player.addListener('account_error', ({ message }) => {
                 console.error(message);
             });
-
-            document.getElementById('togglePlay').onclick = function() {
-              player.togglePlay();
-            };
 
             player.activateElement();
 

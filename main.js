@@ -89,10 +89,12 @@ app.post('/toggleplay', async (req, res) => {
     const id = devices.body.devices[0].id //추가하기
 	console.log(id)
 	await spotifyApi.transferMyPlayback([id],true)
-    await spotifyApi.play({ device_id: id, uris: ['spotify:track:7tajvm3L4vnNsOyMBf3yq3'] });
+	await spotifyApi.play({ device_id: id, uris: ['spotify:track:7tajvm3L4vnNsOyMBf3yq3'] });
 	console.log(devices.body); //여기서 찍어보고 해당된 아이디 가져오고 아래 코드에 경로 추가하기 
     console.log('/toggleplay');
+	res.status(200).send('success');
 });
+
 
 app.get('/callback', function(req, res) {
 
