@@ -7,19 +7,13 @@
 <body>
     <h1>Spotify Web Playback SDK Quick Start</h1>
 
-    <form action="/login" method="get">
-        <button id="login">login</button>
-      </form>
-
-    <form action="/" method="POST">
-        <button id="play">Play</button>
-      </form>
+        <button id="togglePlay">toggle Play</button>
 
       <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
 
         window.onSpotifyWebPlaybackSDKReady = () => {
-            const token = '<%=access_token%>';
+            const token = 'BQCQlau3YBvu5SDGoPq7wk6cC2NlPG-vZq3HduyFHO5ZPfY47DAoaab2kFpzSrKZOA_18_8JxnhvSXLIEKggLdWh31pfeE7kbDzO7x70ZdUaSp2Q-9LrLwHqRJ0AqrPfcfn4bU8HnyJUZFi4yUAvwRRxZeoBkUV8srNyR7BozFPoJif8c2kCytlNy9mAfqZutR7qjW3h5CAr9NXM6oLVALVQfEb2RVt-';
             const player = new Spotify.Player({
                 name: 'Web Playback SDK Quick Start Player',
                 getOAuthToken: cb => { cb(token); },
@@ -48,12 +42,14 @@
                 console.error(message);
             });
 
-            player.connect().then(success => {
-                if (success) {
-                    console.log('The Web Playback SDK successfully connected to Spotify!');
-                }
-            })
+            document.getElementById('togglePlay').onclick = function() {
+              player.togglePlay();
+            };
 
+
+            player.activateElement();
+
+            player.connect();
         }
     </script>
 
