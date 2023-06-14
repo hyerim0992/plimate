@@ -15,6 +15,8 @@
         <button id="play">Play</button>
       </form>
 
+      <button id="active">active</button>
+
       <script src="https://sdk.scdn.co/spotify-player.js"></script>
     <script>
 
@@ -47,6 +49,11 @@
             player.addListener('account_error', ({ message }) => {
                 console.error(message);
             });
+
+            document.getElementById('active').onclick = function() {
+                player.activateElement();
+                console.log('active')
+            };
 
             player.connect().then(success => {
                 if (success) {

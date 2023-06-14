@@ -48,7 +48,7 @@ app.use(
 app.use(express.json());
 
 app.use(express.static(__dirname + '/views'))
-
+app.use(cookieParser());
 
 app.set("view engine", "ejs");
 
@@ -93,7 +93,7 @@ app.post('/', async(req, res, next) => {
 	await spotifyApi.transferMyPlayback([id],true);
 	await spotifyApi.play({ device_id: id, uris: ['spotify:track:7tajvm3L4vnNsOyMBf3yq3'] })
 	 //여기서 찍어보고 해당된 아이디 가져오고 아래 코드에 경로 추가하기 
-	res.end();
+
 	console.log(devices.body);
 });
 
