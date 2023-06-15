@@ -85,7 +85,7 @@ app.get('/',async(req,res, next)=>{
 	next();
 });
 
-app.post('/', async(req, res, next) => {
+app.put('/', async(req, res, next) => {
 
   	const devices = await spotifyApi.getMyDevices();
     const id = devices.body.devices[0].id; //추가하기
